@@ -1,24 +1,19 @@
 import React, { useState, useContext } from "react";
-import Button from "./Button";
-
-export const CountContext = React.createContext();
+import { ThemeContext } from "./App";
 
 export default function CounterHooks({ initialCount }) {
+  console.log("Render Counter Hooks");
   const [count, setCount] = useState(initialCount);
+  const style = useContext(ThemeContext);
   return (
-    <CountContext.Provider value={setCount}>
-      <>
-        {/* <button style={style} onClick={() => setCount((prevCount) => prevCount - 1)}>
-          -
-        </button>
-        <span>{count}</span>
-        <button style={style} onClick={() => setCount((prevCount) => prevCount + 1)}>
+    <div>
+      <button style={style} onClick={() => setCount((prevCount) => prevCount - 1)}>
         -
-      </button> */}
-        <Button changeCount={{ amount: -1, text: "-" }} />
-        <span>{count}</span>
-        <Button changeCount={{ amount: 1, text: "+" }} />
-      </>
-    </CountContext.Provider>
+      </button>
+      <span>{count}</span>
+      <button style={style} onClick={() => setCount((prevCount) => prevCount + 1)}>
+        +
+      </button>
+    </div>
   );
 }

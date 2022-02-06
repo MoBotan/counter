@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import { ThemeContext } from "./App";
 
-export default class Component extends React.Component {
+export default class Counter extends Component {
   constructor(props) {
     super(props);
 
@@ -11,10 +11,11 @@ export default class Component extends React.Component {
   }
 
   render() {
+    console.log("Render Counter");
     return (
       <ThemeContext.Consumer>
         {(style) => (
-          <>
+          <div>
             <button style={style} onClick={() => this.changeCount(-1)}>
               -
             </button>
@@ -22,7 +23,7 @@ export default class Component extends React.Component {
             <button style={style} onClick={() => this.changeCount(1)}>
               +
             </button>
-          </>
+          </div>
         )}
       </ThemeContext.Consumer>
     );
